@@ -1,0 +1,24 @@
+diff -rup a/CMakeLists.txt b/CMakeLists.txt
+--- a/CMakeLists.txt	2023-06-04 00:00:00.000000000 +0000
++++ b/CMakeLists.txt	2023-06-04 00:00:00.000000000 +0000
+@@ -330,6 +330,8 @@ add_subdirectory(plugins/broadcastify_up
+ 
+ add_subdirectory(plugins/unit_script)
+ 
++add_subdirectory(plugins/daily_log)
++
+ add_subdirectory(plugins/rdioscanner_uploader)
+ 
+ add_subdirectory(plugins/simplestream)
+diff -rup a/trunk-recorder/main.cc b/trunk-recorder/main.cc
+--- a/trunk-recorder/main.cc	2023-05-21 00:00:00.000000000 +0000
++++ b/trunk-recorder/main.cc	2023-05-21 00:00:00.000000000 +0000
+@@ -574,6 +574,7 @@ bool load_config(string config_file) {
+     add_internal_plugin("openmhz_uploader", "libopenmhz_uploader.so", pt);
+     add_internal_plugin("broadcastify_uploader", "libbroadcastify_uploader.so", pt);
+     add_internal_plugin("unit_script", "libunit_script.so", pt);
++    add_internal_plugin("daily_log", "daily_log.so", pt);
+     add_internal_plugin("stat_socket", "libstat_socket.so", pt);
+     initialize_plugins(pt, &config, sources, systems);
+   } catch (std::exception const &e) {
+
